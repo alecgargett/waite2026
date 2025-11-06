@@ -101,7 +101,7 @@
         <section id="policy" class="content-section responsive-width">
              <h2>My policies</h2>
              <p>Policy details will be progressively published here and on other platforms like Facebook, Youtube and Instagram between now and the election in March next year.</p>
-<!--              <article>
+             <!-- <article>
              <h3>Solving the underemployment crisis</h3>
               <p>
                The official (low hours) underemployment rate is 5.9%, and the real underemployment rate may be well over 20%. 5.9% is only the number of employed Australians who are working fewer hours than they would like to. It doesn't include the 4.5% of unemployed Australians who are seeking a job, which makes a total of more than 10% of Australians who are underemployed in terms of hours. Even this combined figure doesn't include all of the 20% of Australians who are not fully using their qualifications, not to mention the unknown number of Australians whose skill and knowledge are not being put to best use, meaning that the true underemployment rate, in the broader sense, may be well over 20%.
@@ -160,8 +160,13 @@
 
 <script id="theme-switcher">
 function applySavedTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'light-theme';
-    document.body.className = savedTheme;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.body.className = savedTheme;
+    } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.body.className = prefersDark ? 'dark-theme' : 'light-theme';
+    }
 }
 
 function toggleTheme() {
@@ -402,9 +407,12 @@ body.dark-theme .site-header {
     color: #000;
 }
 
+body.light-theme .content-section {
+    background-color: var(--color-surface);
+}
+
 .content-section {
     padding: 40px 20px;
-    background-color: var(--color-surface);
     margin: 2rem auto;
     border-radius: 8px;
     box-shadow: var(--box-shadow);

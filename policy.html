@@ -160,8 +160,13 @@
 
 <script id="theme-switcher">
 function applySavedTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'light-theme';
-    document.body.className = savedTheme;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.body.className = savedTheme;
+    } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.body.className = prefersDark ? 'dark-theme' : 'light-theme';
+    }
 }
 
 function toggleTheme() {
@@ -402,9 +407,12 @@ body.dark-theme .site-header {
     color: #000;
 }
 
+body.light-theme .content-section {
+    background-color: var(--color-surface);
+}
+
 .content-section {
     padding: 40px 20px;
-    background-color: var(--color-surface);
     margin: 2rem auto;
     border-radius: 8px;
     box-shadow: var(--box-shadow);
