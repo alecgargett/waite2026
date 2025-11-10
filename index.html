@@ -234,7 +234,7 @@ function applySavedTheme() {
         document.body.className = savedTheme;
     } else {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.body.className = prefersDark ? 'dark-theme' : 'white-theme';
+        document.body.className = prefersDark ? 'dark-theme' : 'light-theme';
     }
 }
 
@@ -590,13 +590,13 @@ body.light-theme .site-footer a {
         flex-direction: row;
     }
     .intro-content-box {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0,0.4)),
                           url('images/alec_gargett_adelaide_oval_torrens_river_202303_cropped.jpg');
         background-size: cover;
         background-position: right 25%;
     }
     .intro-content-box.smile {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
                           url('images/alec_gargett_adelaide_oval_torrens_river_202303_smile_cropped.jpg');
     }
 }
